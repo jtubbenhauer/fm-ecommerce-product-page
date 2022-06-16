@@ -35,7 +35,9 @@ const Navbar = ({ menuItems }) => {
       </div>
       <div
         className={
-          mobileOpen ? "fixed w-screen h-screen bg-black opacity-75" : "hidden"
+          mobileOpen
+            ? "fixed w-screen h-screen bg-black opacity-75 z-10"
+            : "hidden"
         }
       ></div>
       <div className="bg-white w-screen flex items-center p-5 justify-between">

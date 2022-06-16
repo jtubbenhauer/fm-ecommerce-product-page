@@ -1,15 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import imageOne from "../images/image-product-1.jpg";
-import imageTwo from "../images/image-product-2.jpg";
-import imageThree from "../images/image-product-3.jpg";
-import imageFour from "../images/image-product-4.jpg";
+
 import iconNext from "../images/icon-next.svg";
 import iconPrevious from "../images/icon-previous.svg";
 
-const imageArray = [imageOne, imageTwo, imageThree, imageFour];
-
-const ImageCarousel = () => {
+const ImageCarousel = ({ images }) => {
   const [imageIndex, setImageIndex] = useState(0);
 
   // Carousel logic
@@ -33,11 +28,11 @@ const ImageCarousel = () => {
           className="bg-white rounded-full w-9 h-9 flex items-center justify-center cursor-pointer"
           onClick={forwards}
         >
-          <img src={iconNext} alt="Next Icon" className="h-4" />
+          <img src={iconNext} alt="Next Icon" className="h-3" />
         </div>
       </div>
       <img
-        src={imageArray[imageIndex]}
+        src={images[imageIndex]}
         className="object-cover overflow-hidden w-full h-full"
         alt="Product Photo"
       />
