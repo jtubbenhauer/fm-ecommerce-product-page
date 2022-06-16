@@ -5,12 +5,12 @@ import logo from "../images/logo.svg";
 import cart from "../images/icon-cart.svg";
 import avatar from "../images/image-avatar.png";
 import closeIcon from "../images/icon-close.svg";
-import MobileMenu from "./MobileMenu";
 
 const Navbar = ({ menuItems }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <>
+      {/* Mobile menu and shadow */}
       <div
         className={
           mobileOpen
@@ -25,8 +25,10 @@ const Navbar = ({ menuItems }) => {
             onClick={() => setMobileOpen(!mobileOpen)}
           />
           <ul className="mt-8">
-            {menuItems.map((item) => (
-              <li className="font-bold text-lg my-3">{item}</li>
+            {menuItems.map((item, index) => (
+              <li className="font-bold text-lg my-3" key={index}>
+                {item}
+              </li>
             ))}
           </ul>
         </div>
@@ -42,12 +44,21 @@ const Navbar = ({ menuItems }) => {
           <img
             src={hamburger}
             alt="Hamburger Menu Icon"
-            className="pr-3"
+            className="pr-3 md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
           />
 
           <img src={logo} alt="Sneakers Logo" />
+          {/* Desktop menu */}
+          <ul className="hidden md:block ml-10">
+            {menuItems.map((item, index) => (
+              <li className="inline-block mr-5" key={index}>
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
+
         {/* Profile and cart */}
         <div className="flex items-center gap-4">
           <img src={cart} alt="Shopping Cart Icon" />
