@@ -5,9 +5,12 @@ import logo from "../images/logo.svg";
 import cart from "../images/icon-cart.svg";
 import avatar from "../images/image-avatar.png";
 import closeIcon from "../images/icon-close.svg";
+import Cart from "./Cart";
 
-const Navbar = ({ menuItems }) => {
+const Navbar = ({ menuItems, cartItems, totalItems }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+
   return (
     <>
       {/* Mobile menu and shadow */}
@@ -36,11 +39,11 @@ const Navbar = ({ menuItems }) => {
       <div
         className={
           mobileOpen
-            ? "fixed w-screen h-screen bg-black opacity-75 z-10"
+            ? "fixed w-screen h-screen bg-black opacity-75 z-30"
             : "hidden"
         }
       ></div>
-      <div className="bg-white w-screen flex items-center p-5 justify-between">
+      <div className="bg-white w-screen flex items-center p-5 justify-between sticky top-0 z-20">
         {/* Hamburger menu and logo */}
         <div className="flex items-center">
           <img
@@ -63,9 +66,18 @@ const Navbar = ({ menuItems }) => {
 
         {/* Profile and cart */}
         <div className="flex items-center gap-4">
-          <img src={cart} alt="Shopping Cart Icon" />
+          <img
+            src={cart}
+            alt="Shopping Cart Icon"
+            onClick={() => setCartOpen(!cartOpen)}
+          />
+          <div>{totalItems}</div>
           <img src={avatar} alt="User Avatar" className="h-[22px]" />
         </div>
+      </div>
+      {/* Floating shopping cart */}
+      <div className={cartOpen ? "fixed top-[4.3rem] z-50" : "hidden"}>
+        <Cart />
       </div>
     </>
   );

@@ -9,14 +9,14 @@ import AddToCart from "./AddToCart";
 
 const imageArray = [imageOne, imageTwo, imageThree, imageFour];
 
-const Product = () => {
+const Product = ({ product, addToCart }) => {
   return (
     <>
       <div className="sm:hidden">
         <ImageCarousel images={imageArray} />
       </div>
-      <ProductInfo />
-      <AddToCart />
+      <ProductInfo product={product} />
+      <AddToCart product={product} addToCart={addToCart} />
     </>
   );
 };
