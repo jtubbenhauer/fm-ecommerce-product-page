@@ -11,33 +11,13 @@ const product = {
   weather can offer.`,
 };
 
-let totalItems = 0;
-
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [totalItems, setTotalItems] = useState(0);
 
   // Current cart items
   const addToCart = (obj, qty) => {
-    obj.qty = qty;
-
-    let itemExists = false;
-
-    cartItems.forEach((i) => {
-      if (i.name === obj.name) {
-        itemExists = true;
-        i.qty += obj.qty;
-      }
-      totalItems += i.qty;
-    });
-
-    if (itemExists) {
-      setCartItems([...cartItems]);
-    } else {
-      setCartItems([...cartItems, obj]);
-    }
-
-    console.log(cartItems);
-    console.log(totalItems);
+    let newArray = [...cartItems];
   };
 
   return (
