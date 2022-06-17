@@ -76,7 +76,13 @@ const Navbar = ({ menuItems, cartItems, totalItems }) => {
         </div>
       </div>
       {/* Floating shopping cart */}
-      <div className={cartOpen ? "fixed top-[4.3rem] z-50" : "hidden"}>
+      <div
+        className={
+          cartOpen
+            ? "fixed top-[4.3rem] z-50 opacity-100 visible transition-[opacity_visibility] ease-in-out"
+            : "fixed invisible opacity-0 z-50 "
+        }
+      >
         <Cart />
       </div>
     </>

@@ -12,12 +12,31 @@ const product = {
 };
 
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([
+    { title: "one", description: "one", qty: 2 },
+    { title: "two", description: "two", qty: 2 },
+    { title: "three", description: "three", qty: 2 },
+  ]);
   const [totalItems, setTotalItems] = useState(0);
 
-  // Current cart items
   const addToCart = (obj, qty) => {
-    let newArray = [...cartItems];
+    obj.qty = qty;
+    let dupe = false;
+    let dupeIndex;
+
+    cartItems.map((i, index) => {
+      if (i.title === obj.title) {
+        dupe = true;
+        dupeIndex = index;
+      }
+    });
+
+    if (dupe) {
+      let newArray = cartItems;
+      console.log(newArray[dupeIndex].qty, obj.qty);
+    } else {
+      setCartItems([...cartItems, obj]);
+    }
   };
 
   return (
