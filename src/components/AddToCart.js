@@ -19,14 +19,14 @@ const AddToCart = ({ product, addToCart }) => {
       <div className="flex items-center justify-between bg-light-grayish-blue p-4 px-5 mb-4 rounded-lg">
         <div
           onClick={decrease}
-          className="flex items-center justify-center w-5 h-5 "
+          className="flex items-center justify-center w-5 h-5 cursor-pointer"
         >
           <img src={minus} alt="Minus Icon" />
         </div>
         <span className="text-sm font-bold">{quantity}</span>
         <div
           onClick={increase}
-          className="flex items-center justify-center w-5 h-5 "
+          className="flex items-center justify-center w-5 h-5 cursor-pointer"
         >
           <img src={plus} alt="Plus Icon" />
         </div>

@@ -7,7 +7,7 @@ import avatar from "../images/image-avatar.png";
 import closeIcon from "../images/icon-close.svg";
 import Cart from "./Cart";
 
-const Navbar = ({ menuItems, cartItems, totalItems }) => {
+const Navbar = ({ menuItems, cartItems, totalItems, deleteItem }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -85,7 +85,7 @@ const Navbar = ({ menuItems, cartItems, totalItems }) => {
             : "fixed invisible opacity-0 z-50 "
         }
       >
-        <Cart />
+        <Cart items={cartItems} deleteItem={deleteItem} />
       </div>
     </>
   );
