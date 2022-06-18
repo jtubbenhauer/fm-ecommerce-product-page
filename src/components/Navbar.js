@@ -71,7 +71,9 @@ const Navbar = ({ menuItems, cartItems, totalItems }) => {
             alt="Shopping Cart Icon"
             onClick={() => setCartOpen(!cartOpen)}
           />
-          <div>{totalItems}</div>
+          <div className="fixed bg-orange rounded-md text-white text-[0.6rem] px-2 -translate-y-3 translate-x-2">
+            {totalItems}
+          </div>
           <img src={avatar} alt="User Avatar" className="h-[22px]" />
         </div>
       </div>

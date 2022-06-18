@@ -1,6 +1,6 @@
 import Product from "./components/Product";
 import Navbar from "./components/Navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const menuItems = ["Collections", "Men", "Women", "About", "Contact"];
 
@@ -12,30 +12,45 @@ const product = {
 };
 
 function App() {
-  const [cartItems, setCartItems] = useState([
-    { title: "one", description: "one", qty: 2 },
-    { title: "two", description: "two", qty: 2 },
-    { title: "three", description: "three", qty: 2 },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
+  let dupe = false;
+  let dupeIndex;
+  let itemsCount = 0;
+
+  // Get total cart items
+  const getTotalItems = () => {
+    for (let i = 0; i < cartItems.length; i++) {
+      itemsCount += cartItems[i].qty;
+    }
+    setTotalItems(itemsCount);
+  };
+
+  useEffect(() => {
+    getTotalItems();
+  });
 
   const addToCart = (obj, qty) => {
-    obj.qty = qty;
-    let dupe = false;
-    let dupeIndex;
-
-    cartItems.map((i, index) => {
+    // Check if item exists in cart
+    cartItems.forEach((i, index) => {
       if (i.title === obj.title) {
         dupe = true;
         dupeIndex = index;
       }
     });
 
+    // Handle duplicate or new item
     if (dupe) {
       let newArray = cartItems;
-      console.log(newArray[dupeIndex].qty, obj.qty);
+      let newTotal = newArray[dupeIndex].qty + qty;
+      console.log(newArray[dupeIndex]);
+      newArray[dupeIndex].qty = newTotal;
+      setCartItems(newArray);
+      getTotalItems();
     } else {
+      obj.qty = qty;
       setCartItems([...cartItems, obj]);
+      getTotalItems();
     }
   };
 
