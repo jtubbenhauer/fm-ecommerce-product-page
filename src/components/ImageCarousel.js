@@ -16,7 +16,7 @@ const ImageCarousel = ({ images }) => {
   };
 
   return (
-    <div className="h-[300px] sm:h-[400px] w-screen flex relative">
+    <div className="h-[300px] sm:h-[400px] md:hidden w-screen flex relative">
       <div className="absolute h-full w-full flex items-center justify-between px-7">
         <div
           className="bg-white rounded-full w-9 h-9 flex items-center justify-center cursor-pointer"

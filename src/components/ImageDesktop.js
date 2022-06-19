@@ -11,17 +11,15 @@ const ImageDesktop = ({ images }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   return (
-    <div className="flex flex-col">
-      <div>
-        <img src={images[currentImageIndex]} className="rounded-2xl" />
-      </div>
+    <div className="hidden md:block max-w-lg">
+      <img src={images[currentImageIndex]} className="rounded-2xl" />
       <div className="flex justify-between mt-5">
         {thumbnails.map((i, index) => (
           <img
             src={i}
             key={index}
             onClick={() => setCurrentImageIndex(index)}
-            className="rounded-2xl"
+            className="rounded-2xl w-20"
           />
         ))}
       </div>
