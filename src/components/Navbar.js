@@ -92,7 +92,7 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
                 key={index}
               >
                 {item}
-                <div className="border-orange group-hover:border-2 w-14 fixed mt-10"></div>
+                <div className="border-orange group-hover:border-2 w-14 fixed mt-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </li>
             ))}
           </ul>
@@ -117,7 +117,7 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
           <img
             src={avatar}
             alt="User Avatar"
-            className="h-[22px] md:h-[40px] hover:border-orange hover:border-2 hover: cursor-pointer rounded-full"
+            className="h-[22px] md:h-[40px] hover:border-orange hover:border-2 cursor-pointer rounded-full"
           />
         </div>
       </div>

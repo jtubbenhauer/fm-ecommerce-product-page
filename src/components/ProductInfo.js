@@ -4,7 +4,7 @@ import AddToCart from "./AddToCart";
 
 const ProductInfo = ({ product, addToCart }) => {
   return (
-    <div className="flex flex-col text-left  w-screen p-5 gap-3 lg:max-w-lg lg:-mt-8">
+    <div className="flex flex-col text-left w-screen p-5 gap-3 lg:max-w-lg lg:-mt-8">
       <span className="font-bold text-xs tracking-widest text-orange">
         SNEAKER COMPANY
       </span>

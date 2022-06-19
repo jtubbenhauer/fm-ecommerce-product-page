@@ -19,20 +19,20 @@ const AddToCart = ({ product, addToCart }) => {
       <div className="flex items-center justify-between bg-light-grayish-blue p-4 px-5 mb-4 lg:mb-0 rounded-lg lg:w-1/3">
         <div
           onClick={decrease}
-          className="flex items-center justify-center w-5 h-5 cursor-pointer"
+          className="flex items-center justify-center w-5 h-5 cursor-pointer hover:opacity-60 transition-all"
         >
           <img src={minus} alt="Minus Icon" />
         </div>
         <span className="text-sm font-bold">{quantity}</span>
         <div
           onClick={increase}
-          className="flex items-center justify-center w-5 h-5 cursor-pointer"
+          className="flex items-center justify-center w-5 h-5 cursor-pointer hover:opacity-60 transition-all"
         >
           <img src={plus} alt="Plus Icon" />
         </div>
       </div>
       <button
-        className="flex gap-2 items-center justify-center lg:w-2/3 bg-orange rounded-lg p-4 lg:p-3 text-light-grayish-blue font-bold shadow-orange/50 shadow-[0_10px_20px]"
+        className="flex gap-2 items-center justify-center lg:w-2/3 bg-orange hover:opacity-60 transition-all rounded-lg p-4 lg:p-3 text-light-grayish-blue font-bold shadow-orange/50 shadow-[0_10px_20px]"
         onClick={() => addToCart(product, quantity)}
       >
         <img src={cart} className="w-4 h-4" />
