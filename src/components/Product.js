@@ -11,7 +11,7 @@ const imageArray = [imageOne, imageTwo, imageThree, imageFour];
 
 const Product = ({ product, addToCart }) => {
   return (
-    <div className="flex flex-col md:flex-row w-4/5 items-center md:justify-evenly">
+    <div className="flex flex-col lg:flex-row w-4/5 items-center lg:justify-evenly lg:mt-20">
       <ImageCarousel images={imageArray} />
       <ImageDesktop images={imageArray} />
       <ProductInfo product={product} addToCart={addToCart} />

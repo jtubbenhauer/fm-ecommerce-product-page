@@ -25,6 +25,7 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
           <img
             src={closeIcon}
             alt="X Close Icon"
+            className="cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
           />
           <ul className="mt-8">
@@ -43,21 +44,24 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
             : "hidden"
         }
       ></div>
-      <div className="bg-white w-screen flex items-center p-5 justify-between sticky top-0 z-20">
+      <div className="bg-white w-screen flex items-center p-5 justify-between sticky top-0 z-20 lg:w-4/5">
         {/* Hamburger menu and logo */}
         <div className="flex items-center">
           <img
             src={hamburger}
             alt="Hamburger Menu Icon"
-            className="pr-3 md:hidden"
+            className="pr-3 md:hidden cursor-pointer"
             onClick={() => setMobileOpen(!mobileOpen)}
           />
 
           <img src={logo} alt="Sneakers Logo" />
           {/* Desktop menu */}
-          <ul className="hidden md:block ml-10">
+          <ul className="hidden md:block ml-14">
             {menuItems.map((item, index) => (
-              <li className="inline-block mr-5" key={index}>
+              <li
+                className="inline-block mr-6 text-very-dark-blue opacity-90"
+                key={index}
+              >
                 {item}
               </li>
             ))}
@@ -65,16 +69,25 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
         </div>
 
         {/* Profile and cart */}
-        <div className="flex items-center gap-4">
-          <img
-            src={cart}
-            alt="Shopping Cart Icon"
+        <div className="flex items-center gap-4 lg:gap-10">
+          <div className="flex items-center cursor-pointer">
+            <img
+              src={cart}
+              alt="Shopping Cart Icon"
+              onClick={() => setCartOpen(!cartOpen)}
+            />
+          </div>
+          <div
             onClick={() => setCartOpen(!cartOpen)}
-          />
-          <div className="fixed bg-orange rounded-md text-white text-[0.6rem] px-2 -translate-y-3 translate-x-2">
+            className="fixed cursor-pointer bg-orange rounded-md text-white text-[0.6rem] px-2 -translate-y-3 translate-x-2"
+          >
             {totalItems}
           </div>
-          <img src={avatar} alt="User Avatar" className="h-[22px]" />
+          <img
+            src={avatar}
+            alt="User Avatar"
+            className="h-[22px] md:h-[40px]"
+          />
         </div>
       </div>
       {/* Floating shopping cart */}

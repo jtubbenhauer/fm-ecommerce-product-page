@@ -15,8 +15,8 @@ const AddToCart = ({ product, addToCart }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row p-5 md:justify-between md:items-center md:gap-5">
-      <div className="flex items-center justify-between bg-light-grayish-blue p-4 px-5 mb-4 md:mb-0 rounded-lg md:w-1/3">
+    <div className="flex flex-col lg:flex-row p-5 lg:p-0 lg:mt-2 lg:justify-between lg:items-center lg:gap-5">
+      <div className="flex items-center justify-between bg-light-grayish-blue p-4 px-5 mb-4 lg:mb-0 rounded-lg lg:w-1/3">
         <div
           onClick={decrease}
           className="flex items-center justify-center w-5 h-5 cursor-pointer"
@@ -32,7 +32,7 @@ const AddToCart = ({ product, addToCart }) => {
         </div>
       </div>
       <button
-        className="flex gap-2 items-center justify-center md:w-2/3 bg-orange rounded-lg p-4 text-light-grayish-blue font-bold shadow-orange/50 shadow-[0_10px_20px]"
+        className="flex gap-2 items-center justify-center lg:w-2/3 bg-orange rounded-lg p-4 lg:p-3 text-light-grayish-blue font-bold shadow-orange/50 shadow-[0_10px_20px]"
         onClick={() => addToCart(product, quantity)}
       >
         <img src={cart} className="w-4 h-4" />

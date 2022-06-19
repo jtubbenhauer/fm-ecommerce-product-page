@@ -13,7 +13,7 @@ const Cart = ({ items, setItems }) => {
   };
 
   return (
-    <div className=" bg-white shadow-lg rounded-lg w-[95vw] flex flex-col">
+    <div className=" bg-white shadow-2xl rounded-lg w-[95vw] md:w-[350px] flex flex-col md:fixed right-20">
       <span className="font-bold p-5">Cart</span>
       <div className="border-t border-y-light-grayish-blue"></div>
       <div className="flex flex-col p-5">
@@ -36,7 +36,7 @@ const Cart = ({ items, setItems }) => {
             />
           </div>
         ))}
-        <button className="bg-orange rounded-lg text-light-grayish-blue py-3 text-sm font-bold">
+        <button className="bg-orange rounded-lg text-light-grayish-blue py-3 lg:my-2 text-sm font-bold">
           Checkout
         </button>
       </div>
