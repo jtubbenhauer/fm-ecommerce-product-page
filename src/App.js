@@ -33,17 +33,6 @@ function App() {
   let dupeIndex;
   let itemsCount = 0;
 
-  const deleteCartItem = (item) => {
-    let newItems = cartItems;
-    console.log(newItems);
-    for (let i = 0; i < newItems.length; i++) {
-      if (newItems[i].title === item.title) {
-        newItems.splice(i, 1);
-      }
-    }
-    setCartItems(newItems);
-  };
-
   // Get total cart items
   const getTotalItems = () => {
     for (let i = 0; i < cartItems.length; i++) {
@@ -84,7 +73,7 @@ function App() {
         menuItems={menuItems}
         cartItems={cartItems}
         totalItems={totalItems}
-        deleteItem={deleteCartItem}
+        setItems={setCartItems}
       />
       <Product product={product} addToCart={addToCart} />
     </div>
