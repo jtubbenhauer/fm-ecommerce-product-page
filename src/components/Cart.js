@@ -13,7 +13,7 @@ const Cart = ({ items, setItems }) => {
   };
 
   return (
-    <div className=" bg-white shadow-2xl rounded-lg w-[95vw] md:w-[350px] flex flex-col md:fixed right-20">
+    <div className=" bg-white mt-5 shadow-2xl rounded-lg w-[95vw] md:w-[350px] flex flex-col md:fixed right-20">
       <span className="font-bold p-5">Cart</span>
       <div className="border-t border-y-light-grayish-blue"></div>
       <div className="flex flex-col p-5">
