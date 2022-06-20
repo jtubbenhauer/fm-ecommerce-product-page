@@ -17,16 +17,20 @@ const ImageDesktop = ({ images }) => {
       <div
         className={
           lightboxOpen
-            ? "bg-black/50 absolute top-0 bottom-0 left-0 right-0 z-40"
+            ? "bg-black/70 absolute top-0 bottom-0 left-0 right-0 z-40"
             : "hidden"
         }
       >
-        <Lightbox images={images} thumbnails={thumbnails} />
+        <Lightbox
+          images={images}
+          thumbnails={thumbnails}
+          lightboxOpen={setLightboxOpen}
+        />
       </div>
       <div className="hidden lg:block">
         <img
           src={images[currentImageIndex]}
-          className="rounded-xl max-h-[400px]"
+          className="cursor-pointer rounded-xl max-h-[400px]"
           onClick={() => setLightboxOpen(!lightboxOpen)}
         />
         <div className="flex justify-between mt-5">
@@ -34,19 +38,20 @@ const ImageDesktop = ({ images }) => {
             <div
               className={
                 index === currentImageIndex
-                  ? "rounded-xl w-16 lg:w-20 cursor-pointer relative border-orange border-[3px]"
+                  ? "rounded-xl w-16 lg:w-20 cursor-pointer relative border-orange border-[4px]"
                   : "rounded-xl w-16 lg:w-20 cursor-pointer relative"
               }
             >
               {index === currentImageIndex && (
                 <div className="w-full h-full absolute bg-white opacity-60 rounded-lg"></div>
               )}
-              <img
-                src={i}
-                key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className="rounded-lg"
-              />
+              {index !== currentImageIndex && (
+                <div
+                  className="w-full h-full absolute bg-white hover:opacity-60 opacity-0 rounded-lg transition-all"
+                  onClick={() => setCurrentImageIndex(index)}
+                ></div>
+              )}
+              <img src={i} key={index} className="rounded-lg" />
             </div>
           ))}
         </div>

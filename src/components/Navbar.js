@@ -88,11 +88,11 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
           <ul className="hidden md:block ml-14">
             {menuItems.map((item, index) => (
               <li
-                className="group inline-block mr-8 text-very-dark-blue opacity-80 hover:opacity-100 cursor-pointer"
+                className="group inline-block mr-8 text-very-dark-blue opacity-70 hover:opacity-100 cursor-pointer"
                 key={index}
               >
                 {item}
-                <div className="border-orange group-hover:border-2 w-14 fixed mt-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="border-orange bg-orange group-hover:border-2 w-14 fixed mt-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </li>
             ))}
           </ul>
