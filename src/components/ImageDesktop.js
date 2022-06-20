@@ -30,12 +30,14 @@ const ImageDesktop = ({ images }) => {
       <div className="hidden lg:block">
         <img
           src={images[currentImageIndex]}
+          alt="Product Images"
           className="cursor-pointer rounded-xl max-h-[400px]"
           onClick={() => setLightboxOpen(!lightboxOpen)}
         />
         <div className="flex justify-between mt-5">
           {thumbnails.map((i, index) => (
             <div
+              key={index}
               className={
                 index === currentImageIndex
                   ? "rounded-xl w-16 lg:w-20 cursor-pointer relative border-orange border-[4px]"
@@ -51,7 +53,12 @@ const ImageDesktop = ({ images }) => {
                   onClick={() => setCurrentImageIndex(index)}
                 ></div>
               )}
-              <img src={i} key={index} className="rounded-lg" />
+              <img
+                src={i}
+                key={index}
+                className="rounded-lg"
+                alt="Product Thumbnails"
+              />
             </div>
           ))}
         </div>

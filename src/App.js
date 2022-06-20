@@ -29,6 +29,7 @@ const product1 = {
 function App() {
   const [cartItems, setCartItems] = useState([product1]);
   const [totalItems, setTotalItems] = useState(0);
+  const [cartOpen, setCartOpen] = useState(false);
   let dupe = false;
   let dupeIndex;
   let itemsCount = 0;
@@ -65,6 +66,8 @@ function App() {
       setCartItems([...cartItems, obj]);
       getTotalItems();
     }
+
+    setCartOpen(true);
   };
 
   return (
@@ -74,6 +77,8 @@ function App() {
         cartItems={cartItems}
         totalItems={totalItems}
         setItems={setCartItems}
+        cartOpen={cartOpen}
+        setCartOpen={setCartOpen}
       />
       <Product product={product} addToCart={addToCart} />
     </div>

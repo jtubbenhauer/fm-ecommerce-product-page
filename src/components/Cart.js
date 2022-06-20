@@ -15,7 +15,7 @@ const Cart = ({ items, setItems }) => {
   return (
     <div className=" bg-white mt-5 shadow-2xl rounded-lg w-[95vw] md:w-[350px] flex flex-col md:fixed right-20">
       <span className="font-bold p-5">Cart</span>
-      <div className="border-t border-y-light-grayish-blue"></div>
+      <div className="border-t border-y-black opacity-10"></div>
       <div className="flex flex-col p-5">
         {items.map((i) => (
           <div key={i.title} className="flex mb-3 items-center">
@@ -36,9 +36,16 @@ const Cart = ({ items, setItems }) => {
             />
           </div>
         ))}
-        <button className="bg-orange rounded-lg text-light-grayish-blue py-3 lg:my-2 text-sm font-bold">
-          Checkout
-        </button>
+        {items.length > 0 && (
+          <button className="bg-orange rounded-lg text-light-grayish-blue py-3 lg:my-2 text-sm font-bold">
+            Checkout
+          </button>
+        )}
+        {items.length == 0 && (
+          <div className="flex items-center justify-center p-14 font-bold text-black opacity-70">
+            Your cart is empty
+          </div>
+        )}
       </div>
     </div>
   );

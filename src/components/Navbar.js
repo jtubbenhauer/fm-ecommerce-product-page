@@ -7,20 +7,29 @@ import avatar from "../images/image-avatar.png";
 import closeIcon from "../images/icon-close.svg";
 import Cart from "./Cart";
 
-const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
+const Navbar = ({
+  menuItems,
+  cartItems,
+  totalItems,
+  setItems,
+  cartOpen,
+  setCartOpen,
+}) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
 
   // Close cart if clicked outside
   const cartDropdown = useRef(null);
   const cartIcon = useRef(null);
+  const itemsIcon = useRef(null);
   const closeOpenCart = (e) => {
     if (
       cartDropdown.current &&
       cartOpen &&
       !cartDropdown.current.contains(e.target) &&
       cartIcon.current &&
-      !cartIcon.current.contains(e.target)
+      !cartIcon.current.contains(e.target) &&
+      itemsIcon.current &&
+      !itemsIcon.current.contains(e.target)
     ) {
       setCartOpen(false);
     }
@@ -46,7 +55,7 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
       <div
         className={
           mobileOpen
-            ? "fixed top-0 left-0 bottom-0 w-[65%] max-w-[275px] min-w-[160px] bg-white z-40"
+            ? "fixed top-0 left-0 bottom-0 w-[65%] max-w-[275px] min-w-[160px] bg-white z-40 transition-all"
             : "hidden"
         }
         ref={mobileMenu}
@@ -99,25 +108,33 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
         </div>
         {/* Profile and cart */}
         <div className="flex items-center gap-4 lg:gap-10">
-          <div className="flex items-center cursor-pointer" ref={cartIcon}>
+          <div
+            className="block items-center cursor-pointer h-8 translate-y-1"
+            ref={cartIcon}
+          >
             <img
               src={cart}
+              className="translate-y-1"
               alt="Shopping Cart Icon"
               onClick={() => setCartOpen(!cartOpen)}
-              ref={cartIcon}
             />
           </div>
           <div
+            ref={itemsIcon}
             onClick={() => setCartOpen(!cartOpen)}
-            ref={cartIcon}
-            className="fixed cursor-pointer bg-orange rounded-md text-white text-[0.6rem] px-2 -translate-y-3 translate-x-2"
+            className={
+              totalItems == 0
+                ? "fixed cursor-pointer invisible bg-orange rounded-md text-white text-[0.6rem] px-2 -translate-y-2 translate-x-2"
+                : "fixed cursor-pointer bg-orange rounded-md text-white text-[0.6rem] px-2 -translate-y-2 translate-x-2"
+            }
           >
             {totalItems}
           </div>
+
           <img
             src={avatar}
             alt="User Avatar"
-            className="h-[22px] md:h-[40px] hover:border-orange hover:border-2 cursor-pointer rounded-full"
+            className="h-[22px] md:h-[50px] hover:border-orange hover:border-2 cursor-pointer rounded-full"
           />
         </div>
       </div>
@@ -132,7 +149,7 @@ const Navbar = ({ menuItems, cartItems, totalItems, setItems }) => {
       >
         <Cart items={cartItems} setItems={setItems} />
       </div>
-      <div className="border w-4/5 mt-4 border-light-grayish-blue"></div>
+      <div className="w-4/5 mt-2 border-t border-y-black opacity-10"></div>
     </>
   );
 };
