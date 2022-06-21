@@ -25,6 +25,8 @@ const ImageDesktop = ({ images }) => {
           images={images}
           thumbnails={thumbnails}
           lightboxOpen={setLightboxOpen}
+          currentIndex={currentImageIndex}
+          setCurrentIndex={setCurrentImageIndex}
         />
       </div>
       <div className="hidden lg:block">

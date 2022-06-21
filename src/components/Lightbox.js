@@ -1,8 +1,18 @@
 import React from "react";
-import { useState } from "react";
 
-const Lightbox = ({ images, thumbnails, lightboxOpen }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const Lightbox = ({
+  images,
+  thumbnails,
+  lightboxOpen,
+  currentIndex,
+  setCurrentIndex,
+}) => {
+  const handlePrev = () => {
+    setCurrentIndex(currentIndex == 0 ? 0 : currentIndex - 1);
+  };
+  const handleNext = () => {
+    setCurrentIndex(currentIndex == 3 ? 3 : currentIndex + 1);
+  };
 
   return (
     <div className="flex w-screen h-screen z-50 items-center justify-center">
@@ -18,28 +28,55 @@ const Lightbox = ({ images, thumbnails, lightboxOpen }) => {
             fill-rule="evenodd"
           />
         </svg>
-
-        <img
-          src={images[currentImageIndex]}
-          className="cursor-pointer rounded-xl"
-        />
+        <div className="relative">
+          <img
+            src={images[currentIndex]}
+            className="cursor-pointer rounded-xl"
+          />
+          <div
+            className="absolute top-1/2 -left-7 flex items-center justify-center bg-white rounded-full w-14 h-14 cursor-pointer group"
+            onClick={handlePrev}
+          >
+            <svg
+              width="12"
+              height="18"
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-very-dark-blue group-hover:stroke-orange transition-all -translate-x-0.5"
+            >
+              <path d="M11 1 3 9l8 8" stroke-width="3" fill="none" />
+            </svg>
+          </div>
+          <div
+            className="absolute top-1/2 -right-7 flex items-center justify-center bg-white rounded-full w-14 h-14 cursor-pointer group"
+            onClick={handleNext}
+          >
+            <svg
+              width="13"
+              height="18"
+              xmlns="http://www.w3.org/2000/svg"
+              className="group-hover:stroke-orange stroke-very-dark-blue transition-all"
+            >
+              <path d="m2 1 8 8-8 8" stroke-width="3" fill="none" />
+            </svg>
+          </div>
+        </div>
         <div className="flex justify-between mt-9 px-7">
           {thumbnails.map((i, index) => (
             <div
               key={index}
               className={
-                index === currentImageIndex
+                index === currentIndex
                   ? "rounded-xl w-16 lg:w-24 cursor-pointer relative border-orange border-[4px]"
                   : "rounded-xl w-16 lg:w-24 cursor-pointer relative"
               }
             >
-              {index === currentImageIndex && (
+              {index === currentIndex && (
                 <div className="w-full h-full absolute bg-white opacity-50 rounded-lg"></div>
               )}
-              {index !== currentImageIndex && (
+              {index !== currentIndex && (
                 <div
                   className="w-full h-full absolute bg-white hover:opacity-20 opacity-0 rounded-lg transition-all"
-                  onClick={() => setCurrentImageIndex(index)}
+                  onClick={() => setCurrentIndex(index)}
                 ></div>
               )}
               <img
