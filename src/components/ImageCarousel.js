@@ -19,7 +19,7 @@ const ImageCarousel = ({ images }) => {
     <div className="sm:max-h-[400px] max-h-[300px] lg:hidden w-screen sm:w-4/5 flex relative">
       <div className="absolute h-full w-full flex items-center justify-between px-7">
         <div
-          className="bg-white rounded-full w-9 h-9 flex items-center justify-center cursor-pointer"
+          className="bg-white rounded-full w-9 h-9 flex items-center justify-center cursor-pointer group"
           onClick={backwards}
         >
           <img src={iconPrevious} alt="Previous Icon" className="h-3 mr-1" />
@@ -28,7 +28,7 @@ const ImageCarousel = ({ images }) => {
           className="bg-white rounded-full w-9 h-9 flex items-center justify-center cursor-pointer"
           onClick={forwards}
         >
-          <img src={iconNext} alt="Next Icon" className="h-3" />
+          <img src={iconNext} alt="Next Icon" className="h-3 " />
         </div>
       </div>
       <img
